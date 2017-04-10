@@ -6,7 +6,7 @@ const attributes = ['item', 'category'];
 class ItemController {
 
   * index(request, response) {
-    const items = yield Item.with().fetch();
+    const items = yield Item.with('duration').fetch();
 
     response.jsonApi('Item', items);
   }
@@ -22,7 +22,7 @@ class ItemController {
 
   * show(request, response) {
     const id = request.param('id');
-    const item = yield Item.with().where({ id }).firstOrFail();
+    const item = yield Item.with('duration').where({ id }).firstOrFail();
 
     response.jsonApi('Item', item);
   }
