@@ -7,6 +7,9 @@ class DurationTableSchema extends Schema {
   up() {
     this.create('duration', (table) => {
       table.increments();
+      table.integer('item_id')
+        .references('items.id')
+        .onDelete('CASCADE');
 
       table.bigInteger('time');
 
