@@ -5,7 +5,7 @@ const Schema = use('Schema');
 class ItemTableSchema extends Schema {
 
   up() {
-    this.create('item', (table) => {
+    this.create('items', (table) => {
       table.increments();
 
       table.string('item');

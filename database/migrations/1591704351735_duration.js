@@ -5,7 +5,7 @@ const Schema = use('Schema');
 class DurationTableSchema extends Schema {
 
   up() {
-    this.create('duration', (table) => {
+    this.create('durations', (table) => {
       table.increments();
       table.integer('item_id')
         .references('items.id')
