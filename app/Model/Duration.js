@@ -5,7 +5,7 @@ const Lucid = use('Lucid');
 class Duration extends Lucid {
 
   item() {
-    return this.belonsTo('App/Model/Item');
+    return this.belongsTo('App/Model/Item');
   }
 
 }
