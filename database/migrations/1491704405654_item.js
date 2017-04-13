@@ -8,6 +8,10 @@ class ItemTableSchema extends Schema {
     this.create('items', (table) => {
       table.increments();
 
+      table.integer('user_id')
+        .references('users.id')
+        .onDelete('CASCADE');
+
       table.string('item');
       table.string('category');
 
@@ -16,7 +20,7 @@ class ItemTableSchema extends Schema {
   }
 
   down() {
-    this.drop('item');
+    this.drop('items');
   }
 
 }

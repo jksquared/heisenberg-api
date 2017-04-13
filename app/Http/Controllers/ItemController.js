@@ -6,7 +6,9 @@ const attributes = ['item', 'category'];
 class ItemController {
 
   * index(request, response) {
-    const items = yield Item.with('duration').fetch();
+    const items = yield Item.with('duration')
+      .where({ user_id: request.authUser.id })
+      .fetch();
 
     response.jsonApi('Item', items);
   }
@@ -14,6 +16,7 @@ class ItemController {
   * store(request, response) {
     const input = request.jsonApi.getAttributesSnakeCase(attributes);
     const foreignKeys = {
+      user_id: request.authUser.id,
     };
     const item = yield Item.create(Object.assign({}, input, foreignKeys));
 

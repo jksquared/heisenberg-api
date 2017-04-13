@@ -18,7 +18,7 @@ class DurationTableSchema extends Schema {
   }
 
   down() {
-    this.drop('duration');
+    this.drop('durations');
   }
 
 }

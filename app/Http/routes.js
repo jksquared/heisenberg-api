@@ -21,5 +21,8 @@ Route.on('/').render('welcome');
 
 Route.post('/users', 'UserController.store');
 Route.post('/token-auth', 'UserController.login');
-Route.resource('/items', 'ItemController').except(['create', 'edit']);
+Route.resource('/items', 'ItemController')
+  .middleware('auth')
+  .except(['create', 'edit']);
+
 Route.resource('/durations', 'DurationController').except(['create', 'edit']);
