@@ -10,7 +10,9 @@ class ItemController {
       .where({ user_id: request.authUser.id })
       .fetch();
 
-    response.jsonApi('Item', items);
+    const showitems = items.toJSON().map(Item.convertItem);
+
+    response.jsonApi('Item', showitems);
   }
 
   * store(request, response) {
