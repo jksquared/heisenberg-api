@@ -6,7 +6,7 @@ const attributes = ['time'];
 class DurationController {
 
   * index(request, response) {
-    const durations = yield Duration.with('item').fetch();
+    const durations = yield Duration.with('items').fetch();
 
     response.jsonApi('Duration', durations);
   }
@@ -14,6 +14,7 @@ class DurationController {
   * store(request, response) {
     const input = request.jsonApi.getAttributesSnakeCase(attributes);
     const foreignKeys = {
+      item_id: request.jsonApi.getRelationId('item'),
     };
     const duration = yield Duration.create(Object.assign({}, input, foreignKeys));
 
@@ -33,6 +34,7 @@ class DurationController {
 
     const input = request.jsonApi.getAttributesSnakeCase(attributes);
     const foreignKeys = {
+      item_id: request.jsonApi.getRelationId('item'),
     };
 
     const duration = yield Duration.with().where({ id }).firstOrFail();

@@ -4,7 +4,7 @@ const Lucid = use('Lucid');
 
 class Duration extends Lucid {
 
-  item() {
+  items() {
     return this.belongsTo('App/Model/Item');
   }
 

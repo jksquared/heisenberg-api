@@ -5,6 +5,13 @@ class Item extends JsonApiView {
     return ['item', 'category'];
   }
 
+  durations() {
+    return this.hasMany('App/Http/JsonApiViews/Duration', {
+      included: true,
+      excludeRelation: 'item'
+    });
+  }
+
 }
 
 module.exports = Item;

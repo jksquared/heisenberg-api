@@ -6,7 +6,7 @@ const attributes = ['item', 'category'];
 class ItemController {
 
   * index(request, response) {
-    const items = yield Item.with('duration')
+    const items = yield Item.with('durations')
       .where({ user_id: request.authUser.id })
       .fetch();
 
@@ -25,7 +25,7 @@ class ItemController {
 
   * show(request, response) {
     const id = request.param('id');
-    const item = yield Item.with('duration').where({ id }).firstOrFail();
+    const item = yield Item.with('durations').where({ id }).firstOrFail();
 
     response.jsonApi('Item', item);
   }

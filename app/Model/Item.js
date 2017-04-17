@@ -4,7 +4,7 @@ const Lucid = use('Lucid');
 
 class Item extends Lucid {
 
-  duration() {
+  durations() {
     return this.hasMany('App/Model/Duration');
   }
 
