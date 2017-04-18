@@ -1,6 +1,7 @@
 'use strict';
 
 const Duration = use('App/Model/Duration');
+const Item = use('App/Model/Item');
 const attributes = ['time'];
 
 class DurationController {
@@ -18,7 +19,13 @@ class DurationController {
     };
     const duration = yield Duration.create(Object.assign({}, input, foreignKeys));
 
-    response.jsonApi('Duration', duration);
+    yield duration.related('item.durations').load();
+
+    const durationResult = duration.toJSON();
+
+    durationResult.item = Item.convertItem(durationResult.item);
+
+    response.jsonApi('Duration', durationResult);
   }
 
   * show(request, response) {
