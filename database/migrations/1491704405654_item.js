@@ -12,8 +12,8 @@ class ItemTableSchema extends Schema {
         .references('users.id')
         .onDelete('CASCADE');
 
-      table.string('item');
-      table.string('category');
+      table.string('item').notNullable();
+      table.string('category').notNullable();
 
       table.timestamps();
     });

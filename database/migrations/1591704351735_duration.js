@@ -11,7 +11,7 @@ class DurationTableSchema extends Schema {
         .references('items.id')
         .onDelete('CASCADE');
 
-      table.bigInteger('time');
+      table.bigInteger('time').notNullable();
 
       table.timestamps();
     });
