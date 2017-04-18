@@ -19,7 +19,7 @@ class DurationController {
     };
     const duration = yield Duration.create(Object.assign({}, input, foreignKeys));
 
-    yield duration.related('item').load();
+    yield duration.related('item.durations').load();
 
     const durationResult = duration.toJSON();
 
