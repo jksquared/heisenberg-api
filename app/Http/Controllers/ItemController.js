@@ -29,7 +29,7 @@ class ItemController {
     const id = request.param('id');
     const item = yield Item.with('durations').where({ id }).firstOrFail();
 
-    response.jsonApi('Item', item);
+    response.jsonApi('Item', Item.convertItem(item.toJSON()));
   }
 
   * update(request, response) {
