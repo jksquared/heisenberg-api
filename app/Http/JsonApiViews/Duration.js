@@ -6,7 +6,7 @@ class Duration extends JsonApiView {
   }
 
   item() {
-    return this.hasMany('App/Http/JsonApiViews/item', {
+    return this.hasMany('App/Http/JsonApiViews/Item', {
       included: true,
       excludeRelation: 'duration',
     });
